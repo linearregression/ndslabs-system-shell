@@ -1,4 +1,4 @@
 
 export DOCKER_API_VERSION=`curl -s --unix-socket /var/run/docker.sock http:/version | cut -d, -f 2 | cut -d: -f2 | tr -d '"'`
-export PS1="[\u@\h NDSLabsDev ] \W # "
+export PS1="[\u@\h NDSLabsSystem ] \W # "
 

@@ -1,8 +1,0 @@
-#!/bin/bash
-BOOTSTRAP_IMAGE=bootstrap-developer-shell
-export DOCKER_API_VERSION=`curl -s --unix-socket /var/run/docker.sock http:/version | cut -d, -f 2 | cut -d: -f2 | tr -d '"'`
-
-
-docker build -f Dockerfile.developer-shell -t ${BOOTSTRAP_IMAGE} . 
-echo 'built bootstrap'
-docker run --rm  -e DOCKER_API_VERSION=${DOCKER_API_VERSION} -v /usr/bin/docker:/usr/bin/docker -v /var/run/docker.sock:/var/run/docker.sock -v `pwd`:/nds/src ${BOOTSTRAP_IMAGE} make
