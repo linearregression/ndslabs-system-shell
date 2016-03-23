@@ -11,7 +11,7 @@ RUN apt-get -y update \
     && apt-get -y clean all \
     && rm -rf /var/lib/apt/lists/*
 
-ADD https://storage.googleapis.com/kubernetes-release/release/v1.2.0/bin/linux/amd64/kubectl /usr/local/bin
+ADD https://storage.googleapis.com/kubernetes-release/release/v1.2.0/bin/linux/amd64/kubectl /usr/local/bin/kubectl
 ADD https://get.docker.com/builds/Linux/x86_64/docker-latest /usr/local/bin/docker
 ADD https://github.com/docker/compose/releases/download/1.6.0-rc1/docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
 COPY FILES.system-shell /
