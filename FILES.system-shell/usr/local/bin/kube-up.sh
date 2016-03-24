@@ -5,7 +5,7 @@ docker run \
     --volume=/var/lib/docker/:/var/lib/docker:rw \
     --volume=/var/lib/kubelet/:/var/lib/kubelet:rw \
     --volume=/var/run:/var/run:rw \
-    --volume=/usr/local/lib/nds/manifests/etcd.json:/etc/kubernetes/manifests/etcd.json \
+    --volumes-from=etcd-manifests \
     --net=host \
     --pid=host \
     --privileged=true \

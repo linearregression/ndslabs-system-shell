@@ -37,13 +37,13 @@ spec:
             mountPath: /volumes
         env:
           - name: ETCD_ADDR
-            value: "INTERNAL_HOST_IP:4001"
+            value: $(IP_ADDR_MACHINE)":4001"
           - name: KUBERNETES_ADDR
-            value: "https://INTERNAL_HOST_IP:6443"
+            value: "https://"$(IP_ADDR_MACHINE)":6443"
           - name: CORS_ORIGIN_ADDR
-            value: "http://PUBLIC_HOST_IP:30000"
+            value: "http://"$(IP_ADDR_PUBLIC)":30000"
           - name: HOST_ADDR
-            value: "PUBLIC_HOST_IP"
+            value: $(IP_ADDR_PUBLIC)
       volumes:
        - hostPath:
             path: /volumes
