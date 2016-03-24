@@ -1,7 +1,7 @@
 #!/bin/bash
 
 usage-docker() {
-    echo -n 'docker run  --volume=/:/rootfs:ro --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:rw --volume=/var/lib/kubelet/:/var/lib/kubelet:rw --volume=/var/run:/var/run:rw --net=host --pid=host --privileged=true -v /var/run/docker.sock:/var/run/docker.sock ndslabs/system-shell bash'
+    echo -n 'docker run  -it --volume=/:/rootfs:ro --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:rw --volume=/var/lib/kubelet/:/var/lib/kubelet:rw --volume=/var/run:/var/run:rw --net=host --pid=host --privileged=true -v /var/run/docker.sock:/var/run/docker.sock ndslabs/system-shell bash'
 }
 
 usage() {

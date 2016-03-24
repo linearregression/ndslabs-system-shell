@@ -35,6 +35,6 @@ spec:
           protocol: TCP
         env:
           - name: APISERVER_HOST
-            value: "PUBLIC_HOST_IP"
+            value: {{ IP_ADDR_PUBLIC }}
           - name: APISERVER_PORT
             value: "30001"
