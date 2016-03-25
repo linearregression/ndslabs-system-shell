@@ -1,11 +1,13 @@
 #!/bin/sh
+docker inspect k8-manifest-override > /dev/null 2>&1 || docker create --name k8-manifest-override -v /etc/kubernetes/manifests -it gcr.io/google_containers/hyperkube-amd64:v1.2.0 bash && docker cp /usr/local/lib/kubernetes k8-manifest-override:/etc
+
 docker run \
     --volume=/:/rootfs:ro \
     --volume=/sys:/sys:ro \
     --volume=/var/lib/docker/:/var/lib/docker:rw \
     --volume=/var/lib/kubelet/:/var/lib/kubelet:rw \
     --volume=/var/run:/var/run:rw \
-    --volumes-from=etcd-manifests \
+    --volumes-from=k8-manifest-override \
     --net=host \
     --pid=host \
     --privileged=true \
