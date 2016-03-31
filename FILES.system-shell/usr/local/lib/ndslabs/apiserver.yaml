@@ -8,7 +8,7 @@ spec:
   selector:
     component: ndslabs-apiserver
   ports:
-    - port: 8083
+    - port: 30001
       protocol: TCP
       nodePort: 30001
   type: NodePort
@@ -30,7 +30,7 @@ spec:
       - name: ndslabs-apiserver
         image: ndslabs/apiserver:latest
         ports:
-        - containerPort: 8083
+        - containerPort: 30001
           protocol: TCP
         volumeMounts:
           - name: volumes
@@ -43,7 +43,11 @@ spec:
           - name: CORS_ORIGIN_ADDR
             value: "http://{{ IP_ADDR_PUBLIC }}:30000"
           - name: HOST_ADDR
-            value: {{ IP_ADDR_PUBLIC }}
+            value: "{{ IP_ADDR_PUBLIC }}"
+          - name: SPEC_GIT_REPO
+            value: "https://github.com/nds-org/ndslabs-specs.git"
+          - name: SPEC_GIT_BRANCH
+            value: "master"
       volumes:
        - hostPath:
             path: /volumes
