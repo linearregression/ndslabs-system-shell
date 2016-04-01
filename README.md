@@ -1,4 +1,6 @@
-# NDS System Shell - A container with tooling to bootup a micro-cluster environment and run/admin use NDSLabs services.
+# NDS System Shell 
+
+A container that can be used to bootup a micro-cluster environment and run NDSLabs services.
 
 This is the build source for the ndslabs/system-shell container image.
 See https://github.com/nds-org
@@ -18,3 +20,4 @@ See https://github.com/nds-org
 # Commands
   * kube-up.sh - bring up a kubernetes micro-cluster
   * ndslabs-up.sh - layer NDSLabs services on-top of kubernetes
+  * toolsrv.sh - starts the Tool Manager docker container
