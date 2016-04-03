@@ -18,3 +18,5 @@ COPY FILES.system-shell /
 RUN chmod a+x /usr/local/bin/*
 
 RUN echo '. ${HOME}/.bashrc-nds-sys' >> /root/.bashrc
+
+CMD usage

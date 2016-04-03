@@ -1,12 +1,12 @@
 #!/bin/bash
 
 usage-docker() {
-    echo -n 'docker run  -it --volume=/:/rootfs:ro --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:rw --volume=/var/lib/kubelet/:/var/lib/kubelet:rw --volume=/var/run:/var/run:rw --net=host --pid=host --privileged=true -v /var/run/docker.sock:/var/run/docker.sock ndslabs/system-shell bash'
+    echo -n 'docker run  --name=system-shell -it --volume=/:/rootfs:ro --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:rw --volume=/var/lib/kubelet/:/var/lib/kubelet:rw --volume=/var/run:/var/run:rw --net=host --pid=host --privileged=true -v /var/run/docker.sock:/var/run/docker.sock ndslabs/system-shell bash'
 }
 
 usage() {
     echo "This image produces the command to run itself in the following environments:"
-    echo -n 'eval $(docker run --rm -t ndslabs/system-shell usage docker)'
+    echo -n 'eval $(docker run -t ndslabs/system-shell usage docker)'
     
 }
 
