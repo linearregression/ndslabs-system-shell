@@ -4,7 +4,6 @@ RUN apt-get -y update \
         vim \
 	git \
         nano \
-	docker.io \
         wget \
 	curl \
         ca-certificates \
