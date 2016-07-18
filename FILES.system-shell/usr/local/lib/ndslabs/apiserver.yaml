@@ -26,15 +26,17 @@ spec:
       labels:
         component: ndslabs-apiserver
     spec:
+#      hostNetwork: true
       containers:
       - name: ndslabs-apiserver
         image: ndslabs/apiserver:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 30001
           protocol: TCP
         volumeMounts:
           - name: volumes
-            mountPath: /volumes
+            mountPath: /ndslabs/data/volumes
         env:
           - name: ETCD_ADDR
             value: "{{ IP_ADDR_MACHINE }}:4001"
@@ -48,12 +50,15 @@ spec:
             value: "https://github.com/nds-org/ndslabs-specs.git"
           - name: SPEC_GIT_BRANCH
             value: "master"
+          - name: INGRESS
+            value: "NodePort"
+          - name: DOMAIN
+            value: "localhost"
+          - name: VOLUME_PATH
+            value: "/ndslabs/data/volumes"
       volumes:
        - hostPath:
-            path: /volumes
+            path: /ndslabs/data/volumes
          name: volumes
-#      volumes:
-#       - name: cinder
-#         cinder:
-#           volumeID: 016af9cc-4530-4422-9eb8-95e1df993e62
-#           fsType: ext4
+      nodeSelector:
+          ndslabs-node-role: compute

@@ -30,11 +30,25 @@ spec:
       containers:
       - name: ndslabs-gui
         image: ndslabs/ndslabs-gui:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
           protocol: TCP
         env:
           - name: APISERVER_HOST
-            value: {{ IP_ADDR_PUBLIC }}
+            value: "{{ IP_ADDR_PUBLIC }}"
           - name: APISERVER_PORT
             value: "30001"
+          - name: APISERVER_PATH
+            value: "/api"
+          - name: APISERVER_SECURE
+            value: "false"
+        readinessProbe:
+          httpGet:
+            path: /asset/png/favicon-2-32x32.png
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          timeoutSeconds: 120
+      nodeSelector:
+          ndslabs-node-role: compute
