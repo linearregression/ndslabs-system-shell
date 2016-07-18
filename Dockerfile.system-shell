@@ -5,7 +5,7 @@ RUN apt-get -y update \
 	git \
         nano \
         wget \
-	curl \
+        curl \
         ca-certificates \
         net-tools \
     && apt-get -y clean all \
