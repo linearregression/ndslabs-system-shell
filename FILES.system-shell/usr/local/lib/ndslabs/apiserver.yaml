@@ -29,7 +29,7 @@ spec:
 #      hostNetwork: true
       containers:
       - name: ndslabs-apiserver
-        image: ndslabs/apiserver:latest
+        image: ndslabs/apiserver:v1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 30001
